@@ -19,14 +19,14 @@ dataSource.forEach((e) => {
 Object.entries(departmentObj).forEach(([name, code], index) => {
   const id = index + 1;
   const separator = Object.keys(departmentObj).length === id ? ';' : ',';
-  departmentQuery += `(${id}, "${name}", "${code}")${separator}\n`;
+  departmentQuery += `(${id}, '${name}', '${code}')${separator}\n`;
 });
 
 dataSource.forEach((e, index) => {
   const id = index + 1;
   const separator = dataSource.length === id ? ';' : ',';
   const departmentId = getDepartmentId(e.departamentoDANE);
-  municipalityQuery += `(${id}, ${departmentId}, "${e.municipio}", "${e.municipioDANE}")${separator}\n`;
+  municipalityQuery += `(${id}, ${departmentId}, '${e.municipio}', '${e.municipioDANE}')${separator}\n`;
 });
 
 const outputPathDepartment = path.join(__dirname, '..', 'scripts', 'departamento_query.sql');
